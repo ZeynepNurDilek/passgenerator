@@ -1,0 +1,53 @@
+<html>
+<head>
+<title> Pass Generator </title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+//"levelname", "folder" ,"size"
+var settings ={ 
+			"start":[
+    			{"img":"test", "id":"hayvan"}, 
+    			{"img":"test2", "id":"insan"}, 
+    			{"img":"test3", "id":"balik"}
+			],
+			"2":[
+				{"img2":"id"}
+			]
+};
+
+
+
+function createPassArea(settings) {
+	// fo
+	
+	
+		for (var i=0;i<settings.start.length;i++) {
+			console.log(settings.start[i].img);
+			$('#passArea').append(2);
+
+		}
+
+	
+
+};
+
+
+function createRandomPass() {
+
+
+}
+
+
+createPassArea(settings);
+</script>
+
+</head>
+
+<body>
+	<div id="passArea">
+
+	</div>
+
+</body>
+</html>
