@@ -2,29 +2,39 @@
 <head>
 <title> Pass Generator </title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<style>
+.passImg {width: 150px;height:150px;float: left;border:1px solid #efefef;}
+
+</style>
 
 <script type="text/javascript">
 //"levelname", "folder" ,"size"
 var settings ={ 
-			"start":[
-    			{"img":"test", "id":"hayvan"}, 
-    			{"img":"test2", "id":"insan"}, 
-    			{"img":"test3", "id":"balik"}
+			"first":[
+    			{"img":"test", "id":"animal"}, 
+    			{"img":"test2", "id":"fruit"}, 
+    			{"img":"test3", "id":"fruit"}
 			],
-			"2":[
-				{"img2":"id"}
+			"animal":[
+				{"img2":"123", "id":"fruit"}
+			],
+			"fruit":[
+				{"img3":"id","id":"animal"}
 			]
 };
 
+var currentLevel =0;
 
+var selectedImg = [];
 
 function createPassArea(settings) {
 	// fo
 	
-	
-		for (var i=0;i<settings.start.length;i++) {
-			console.log(settings.start[i].img);
-			$('#passArea').append(2);
+		console.log(settings);
+		for (var i=0;i<settings.length;i++) {
+			id = settings[i].id
+			img = settings[i].img
+			$('#passArea').append('<div id="'+id+'" class="passImg"><img src="img/'+img+'"></div>');
 
 		}
 
@@ -32,14 +42,46 @@ function createPassArea(settings) {
 
 };
 
+$(document).on('click', '.passImg', function(){ 
+	currentLevel=currentLevel+1;
+  // Holds the product ID of the clicked element
+  	console.log('lenght of settings '+Object.keys(settings).length)
+ 	if(currentLevel == Object.keys(settings).length) {
+  		$('#passArea').empty();
+  		console.log('secimtamam');
+  		console.log('selectedImg'+selectedImg);
+  	} else {
+  		$('#passArea').empty();
+  		id=jQuery(this).attr("id");
+  		console.log('secilen ID '+id);
+  		
+  		console.log('current level '+ currentLevel);
+  		selectedImg[selectedImg.length]=$(this).find('img:first').attr('img');
+  		console.log('select Img List '+selectedImg);
+  		createPassArea(settings[id]);
+
+  	}
+  });
+
+
 
 function createRandomPass() {
-
 
 }
 
 
-createPassArea(settings);
+
+
+
+
+$(document).ready(function() {
+
+
+ 	createPassArea(settings.first);
+});
+
+
+
 </script>
 
 </head>
