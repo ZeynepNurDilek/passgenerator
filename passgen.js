@@ -2,7 +2,7 @@
 
 //level names for 
 var levelNames = ["kids","easy","medium","hard"];
-
+var setting;
 var categories = [{
   "kids": [{
     "animal" : [
@@ -27,7 +27,7 @@ function getFirstJson(){
 
 console.log(Object.keys(categories[0].kids[0])[0]);
 
-var settings = {
+var kidssettings = {
   "first" : [ {"img": "kids/animal/bird.png","category":"animal","saltcode":"100"},
               {"img": "kids/fruit/apple.png","category":"fruit","saltcode":"200"},
               {"img": "kids/kid/astronaut.png","category":"kid","saltcode":"300"},
@@ -81,8 +81,8 @@ function createPassArea(settings) {
 $(document).on('click', '.passImg', function(){ 
   currentLevel=currentLevel+1;
   // Holds the product ID of the clicked element
-    console.log('lenght of settings '+Object.keys(settings).length)
-  if(currentLevel == Object.keys(settings).length) {
+  //  console.log('lenght of settings '+Object.keys(settings).length)
+  if(currentLevel == Object.keys(setting).length) {
       $('#passArea').empty();
       console.log('secimtamam');
       console.log('selectedImg'+selectedImg);
@@ -94,7 +94,7 @@ $(document).on('click', '.passImg', function(){
       console.log('current level '+ currentLevel);
       selectedImg[selectedImg.length]=$(this).find('img:first').attr('img');
       console.log('select Img List '+selectedImg);
-      createPassArea(settings[category]);
+      createPassArea(setting[category]);
 
     }
   });
@@ -102,6 +102,18 @@ $(document).on('click', '.passImg', function(){
 
 
 function createRandomPass() {
+
+}
+
+function initPassCreator(level){
+  if (level == "kids" ){
+    setting = kidssettings;
+    createPassArea(kidssettings.first);
+  }else{
+    setting = settingsasd;
+    createPassArea(settingsasd.first);
+  }
+  
 
 }
 
