@@ -1,8 +1,18 @@
 //"levelname", "folder" ,"size"
 
-//level names for 
+
+
+/**
+GLOBAL VARIABLES
+**/
+
 var levelNames = ["kids","easy","medium","hard"];
 var setting;
+
+var currentLevel =0;
+
+var selectedImg = [];
+
 var categories = [{
   "kids": [{
     "animal" : [
@@ -60,9 +70,6 @@ var settingsasd = {
 
 
 
-var currentLevel =0;
-
-var selectedImg = [];
 
 function createPassArea(settings) {
   // fo
@@ -73,9 +80,6 @@ function createPassArea(settings) {
       $('#passArea').append('<div id="'+category+'" class="passImg"><img src="img/'+img+'"></div>');
 
     }
-
-  
-
 };
 
 $(document).on('click', '.passImg', function(){ 
@@ -113,7 +117,6 @@ function initPassCreator(level){
     setting = settingsasd;
     createPassArea(settingsasd.first);
   }
-  
 
 }
 
