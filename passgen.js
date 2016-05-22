@@ -28,7 +28,7 @@ var kidssettings = {
               {"img":"kids/fruit/grape.png","saltcode":"204"},
               {"img":"kids/fruit/lemon.png","saltcode":"205"},
               {"img":"kids/fruit/orange.png","saltcode":"206"},
-              {"img":"kids/fruit/pear.png","saltcode":"207"},
+              {"img":"kids/fruit/kivi.png","saltcode":"207"},
               {"img":"kids/fruit/strawberry.png","saltcode":"208"},
               {"img":"kids/fruit/watermelon.png","saltcode":"209"},
           ],
@@ -79,7 +79,12 @@ $(document).on('click', '.passImg', function(){
   if(currentLevel != Object.keys(setting).length) {
       createPassArea(setting[category]);
     }else{
-      console.log(createRandomPass());
+      $('#passArea').append('<div class="passText"><label>Parola girildi.</label></div>');
+      $('#passArea').height('40px');
+
+      var pass = createRandomPass();
+      console.log(pass);
+      $('#password').val(pass);
     }
   });
 
